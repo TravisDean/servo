@@ -415,6 +415,8 @@ def check_rust(file_name, lines):
             (r"^&&", "operators should go at the end of the first line", no_filter),
             (r"\{[A-Za-z0-9_]+\};", "use statement contains braces for single import",
                 lambda match, line: line.startswith('use ')),
+            # (r"\n\s*else {", "else { should be with the preceding }", no_filter),
+            (r"^\s*else {", "else parentheses should be on the same line", no_filter),
         ]
 
         for pattern, message, filter_func in regex_rules:
